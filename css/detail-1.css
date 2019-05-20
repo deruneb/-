@@ -1,0 +1,22 @@
+.container{
+    height: 100%;
+}
+.content h1{
+    /*border: 1px solid #ccc;*/
+    text-align: center;
+    margin-bottom: 10px; 
+    text-shadow: 1px 1px 16px #000000;
+}
+.cont{
+    /*border: 1px solid #ccc;*/
+    text-align: center;
+    margin-bottom: 10px; 
+    line-height: 35px;
+ 
+}
+#icont{
+    border: 1px solid #ccc;
+}
+#icont img{
+    width: 1160px;
+}

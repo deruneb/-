@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>果果博客-第二页</title>
+	<!-- 头部样式引入 -->
+	<link rel="stylesheet" href="../css/header.css">
+	<!-- 内容区样式引入 -->
+	<!-- <link rel="stylesheet" href="../css/index.css"> -->
+	<link rel="stylesheet" href="../css/aos.css">
+	<link rel="stylesheet" href="../css/index3.css">
+	<!-- 页脚样式引入 -->
+	<link rel="stylesheet" href="../css/footer.css">
+</head>
+
+<body>
+	<!--[if IE]>
+		<script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+
+	<!-- <script>
+        alert('丢你楼某，扑街仔，贪晚栏月，介是你没有挽过的船新版本，只需体验三番钟，你造会干我一样，爱尚介款游戏，一给，窝里搞搞，波波波')
+    </script> -->
+	<!-- 头部样式 -->
+	<div id="header">
+		<!-- 1.顶部 -->
+		<div class="crest">
+			<div class="content ">
+				<span class="flt">欢迎访问果果博客</span>
+				<span class="frt">
+					<a href="">关于我们</a>
+					<a href="">联系我们</a>
+				</span>
+				<div class="clear"></div>
+			</div>
+			<audio controls="controls">
+				<source src="../video/3.mp3" type="audio/mp3"></source>
+			</audio>
+		</div>
+		<!-- 2.导航栏 -->
+		<div class="Navbox">
+			<div class="Nav">
+				<img src="../img/logo.png">
+				<ul class="NavDate">
+					<li class="active">
+						<a href="./index2.html">首页</a>
+					</li>
+					<li>
+						<a href="">互联网</a>
+					</li>
+					<li>
+						<a href="">好货推荐</a>
+					</li>
+					<li>
+						<a href="">技术宅</a>
+					</li>
+					<li>
+						<a href="">数码</a>
+					</li>
+					<li>
+						<a href="">民生</a>
+					</li>
+					<li>
+						<a href="">影像</a>
+					</li>
+					<li>
+						<a href="">游记</a>
+					</li>
+					<li>
+						<a href="">心情随笔</a>
+					</li>
+					<li>
+						<a href="">留言本</a>
+					</li>
+				</ul>
+				<form method="POST" class="search">
+					<input type="text" name="sear" class="sear" placeholder="Search" maxlength="12">
+					<input type="button" name="tijia" class="glass">
+				</form>
+			</div>
+		</div>
+		<!-- 3.结尾 -->
+		<div class="head-btm">
+			<div id="test">
+				<canvas id="canvas" width="1349" height="400"></canvas>
+				<script>
+					function project3D(x, y, z, vars) {
+						var p, d;
+						x -= vars.camX;
+						y -= vars.camY - 8;
+						z -= vars.camZ;
+						p = Math.atan2(x, z);
+						d = Math.sqrt(x * x + z * z);
+						x = Math.sin(p - vars.yaw) * d;
+						z = Math.cos(p - vars.yaw) * d;
+						p = Math.atan2(y, z);
+						d = Math.sqrt(y * y + z * z);
+						y = Math.sin(p - vars.pitch) * d;
+						z = Math.cos(p - vars.pitch) * d;
+						var rx1 = -1000;
+						var ry1 = 1;
+						var rx2 = 1000;
+						var ry2 = 1;
+						var rx3 = 0;
+						var ry3 = 0;
+						var rx4 = x;
+						var ry4 = z;
+						var uc = (ry4 - ry3) * (rx2 - rx1) - (rx4 - rx3) * (ry2 - ry1);
+						var ua = ((rx4 - rx3) * (ry1 - ry3) - (ry4 - ry3) * (rx1 - rx3)) / uc;
+						var ub = ((rx2 - rx1) * (ry1 - ry3) - (ry2 - ry1) * (rx1 - rx3)) / uc;
+						if (!z) z = 0.000000001;
+						if (ua > 0 && ua < 1 && ub > 0 && ub < 1) {
+							return {
+								x: vars.cx + (rx1 + ua * (rx2 - rx1)) * vars.scale,
+								y: vars.cy + y / z * vars.scale,
+								d: (x * x + y * y + z * z)
+							}
+						} else {
+							return {
+								d: -1
+							}
+						}
+					}
+
+					function elevation(x, y, z) {
+						var dist = Math.sqrt(x * x + y * y + z * z);
+						if (dist && z / dist >= -1 && z / dist <= 1) return Math.acos(z / dist);
+						return 0.00000001
+					}
+
+					function rgb(col) {
+						col += 0.000001;
+						var r = parseInt((0.5 + Math.sin(col) * 0.5) * 16);
+						var g = parseInt((0.5 + Math.cos(col) * 0.5) * 16);
+						var b = parseInt((0.5 - Math.sin(col) * 0.5) * 16);
+						return "#" + r.toString(16) + g.toString(16) + b.toString(16)
+					}
+
+					function interpolateColors(RGB1, RGB2, degree) {
+						var w2 = degree;
+						var w1 = 1 - w2;
+						return [w1 * RGB1[0] + w2 * RGB2[0], w1 * RGB1[1] + w2 * RGB2[1], w1 * RGB1[2] + w2 * RGB2[2]]
+					}
+
+					function rgbArray(col) {
+						col += 0.000001;
+						var r = parseInt((0.5 + Math.sin(col) * 0.5) * 256);
+						var g = parseInt((0.5 + Math.cos(col) * 0.5) * 256);
+						var b = parseInt((0.5 - Math.sin(col) * 0.5) * 256);
+						return [r, g, b]
+					}
+
+					function colorString(arr) {
+						var r = parseInt(arr[0]);
+						var g = parseInt(arr[1]);
+						var b = parseInt(arr[2]);
+						return "#" + ("0" + r.toString(16)).slice(-2) + ("0" + g.toString(16)).slice(-2) + ("0" + b.toString(16)).slice(-
+							2)
+					}
+
+					function process(vars) {
+						if (vars.points.length < vars.initParticles)
+							for (var i = 0; i < 5; ++i) spawnParticle(vars);
+						var p, d, t;
+						p = Math.atan2(vars.camX, vars.camZ);
+						d = Math.sqrt(vars.camX * vars.camX + vars.camZ * vars.camZ);
+						d -= Math.sin(vars.frameNo / 80) / 25;
+						t = Math.cos(vars.frameNo / 300) / 165;
+						vars.camX = Math.sin(p + t) * d;
+						vars.camZ = Math.cos(p + t) * d;
+						vars.camY = -Math.sin(vars.frameNo / 220) * 15;
+						vars.yaw = Math.PI + p + t;
+						vars.pitch = elevation(vars.camX, vars.camZ, vars.camY) - Math.PI / 2;
+						var t;
+						for (var i = 0; i < vars.points.length; ++i) {
+							x = vars.points[i].x;
+							y = vars.points[i].y;
+							z = vars.points[i].z;
+							d = Math.sqrt(x * x + z * z) / 1.0075;
+							t = .1 / (1 + d * d / 5);
+							p = Math.atan2(x, z) + t;
+							vars.points[i].x = Math.sin(p) * d;
+							vars.points[i].z = Math.cos(p) * d;
+							vars.points[i].y += vars.points[i].vy * t * ((Math.sqrt(vars.distributionRadius) - d) * 2);
+							if (vars.points[i].y > vars.vortexHeight / 2 || d < .25) {
+								vars.points.splice(i, 1);
+								spawnParticle(vars)
+							}
+						}
+					}
+
+					function drawFloor(vars) {
+						var x, y, z, d, point, a;
+						for (var i = -25; i <= 25; i += 1) {
+							for (var j = -25; j <= 25; j += 1) {
+								x = i * 2;
+								z = j * 2;
+								y = vars.floor;
+								d = Math.sqrt(x * x + z * z);
+								point = project3D(x, y - d * d / 85, z, vars);
+								if (point.d != -1) {
+									size = 1 + 15000 / (1 + point.d);
+									a = 0.15 - Math.pow(d / 50, 4) * 0.15;
+									if (a > 0) {
+										vars.ctx.fillStyle = colorString(interpolateColors(rgbArray(d / 26 - vars.frameNo / 40), [0, 128, 32], .5 +
+											Math.sin(d / 6 - vars.frameNo / 8) / 2));
+										vars.ctx.globalAlpha = a;
+										vars.ctx.fillRect(point.x - size / 2, point.y - size / 2, size, size)
+									}
+								}
+							}
+						}
+						vars.ctx.fillStyle = "#82f";
+						for (var i = -25; i <= 25; i += 1) {
+							for (var j = -25; j <= 25; j += 1) {
+								x = i * 2;
+								z = j * 2;
+								y = -vars.floor;
+								d = Math.sqrt(x * x + z * z);
+								point = project3D(x, y + d * d / 85, z, vars);
+								if (point.d != -1) {
+									size = 1 + 15000 / (1 + point.d);
+									a = 0.15 - Math.pow(d / 50, 4) * 0.15;
+									if (a > 0) {
+										vars.ctx.fillStyle = colorString(interpolateColors(rgbArray(-d / 26 - vars.frameNo / 40), [32, 0, 128], .5 +
+											Math.sin(-d / 6 - vars.frameNo / 8) / 2));
+										vars.ctx.globalAlpha = a;
+										vars.ctx.fillRect(point.x - size / 2, point.y - size / 2, size, size)
+									}
+								}
+							}
+						}
+					}
+
+					function sortFunction(a, b) {
+						return b.dist - a.dist
+					}
+
+					function draw(vars) {
+						vars.ctx.globalAlpha = .15;
+						vars.ctx.fillStyle = "#000";
+						vars.ctx.fillRect(0, 0, canvas.width, canvas.height);
+						drawFloor(vars);
+						var point, x, y, z, a;
+						for (var i = 0; i < vars.points.length; ++i) {
+							x = vars.points[i].x;
+							y = vars.points[i].y;
+							z = vars.points[i].z;
+							point = project3D(x, y, z, vars);
+							if (point.d != -1) {
+								vars.points[i].dist = point.d;
+								size = 1 + vars.points[i].radius / (1 + point.d);
+								d = Math.abs(vars.points[i].y);
+								a = .8 - Math.pow(d / (vars.vortexHeight / 2), 1000) * .8;
+								vars.ctx.globalAlpha = a >= 0 && a <= 1 ? a : 0;
+								vars.ctx.fillStyle = rgb(vars.points[i].color);
+								if (point.x > -1 && point.x < vars.canvas.width && point.y > -1 && point.y < vars.canvas.height) vars.ctx.fillRect(
+									point.x - size / 2, point.y - size / 2, size, size)
+							}
+						}
+						vars.points.sort(sortFunction)
+					}
+
+					function spawnParticle(vars) {
+						var p, ls;
+						pt = {};
+						p = Math.PI * 2 * Math.random();
+						ls = Math.sqrt(Math.random() * vars.distributionRadius);
+						pt.x = Math.sin(p) * ls;
+						pt.y = -vars.vortexHeight / 2;
+						pt.vy = vars.initV / 20 + Math.random() * vars.initV;
+						pt.z = Math.cos(p) * ls;
+						pt.radius = 200 + 800 * Math.random();
+						pt.color = pt.radius / 1000 + vars.frameNo / 250;
+						vars.points.push(pt)
+					}
+
+					function frame(vars) {
+						if (vars === undefined) {
+							var vars = {};
+							vars.canvas = document.querySelector("canvas");
+							vars.ctx = vars.canvas.getContext("2d");
+							vars.canvas.width = document.body.clientWidth;
+							vars.canvas.height = document.body.clientHeight;
+							window.addEventListener("resize", function () {
+								vars.canvas.width = document.body.clientWidth;
+								vars.canvas.height = document.body.clientHeight;
+								vars.cx = vars.canvas.width / 2;
+								vars.cy = vars.canvas.height / 2
+							}, true);
+							vars.frameNo = 0;
+							vars.camX = 0;
+							vars.camY = 0;
+							vars.camZ = -14;
+							vars.pitch = elevation(vars.camX, vars.camZ, vars.camY) - Math.PI / 2;
+							vars.yaw = 0;
+							vars.cx = vars.canvas.width / 2;
+							vars.cy = vars.canvas.height / 2;
+							vars.bounding = 10;
+							vars.scale = 500;
+							vars.floor = 26.5;
+							vars.points = [];
+							vars.initParticles = 1000;
+							vars.initV = .01;
+							vars.distributionRadius = 800;
+							vars.vortexHeight = 25
+						}
+						vars.frameNo++;
+						requestAnimationFrame(function () {
+							frame(vars)
+						});
+						process(vars);
+						draw(vars)
+					}
+					frame();
+				</script>
+
+			</div>
+
+			<div class="content">
+				<div class="tit">
+					<h2>果果博客</h2>
+					<a href="">+关注</a>
+				</div>
+				<p>WY love LYY</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- 内容区 -->
+	<div class="container">
+		<!-- 内容区左边部分 -->
+		<div class="columnbox">
+			<div class="listbox">
+				<img src="../img/psb (17).jpg" alt="">
+				<div class="content">
+					<a href="./detail-11.html" class="color">
+						<h4>考研大作战，第十一天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.18
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9999+
+						</span>
+					</div>
+					<p>今日主题:多维随机变量 问题(O_O)？ 一图 太重要了！！ [拳头][拳头] 数字特征的一些基础知识 哇 今天学了超级多的数字特征的知识 明天要重看笔记以及整理了[奋斗] 5 图 今天错的二重积分知识！！！极坐标转化 要注意 ⊙和
+						r 的范围 要注意哦 [流泪][流泪][流泪]我的天 期末也来了 别人都是 2 3科 我们8科 8科啊 而且基本都属于翻全书 几百页的ppt让我怎么看[微笑] 复习周 很难受了 笑着哭[捂脸]
+
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (18).jpg" alt="">
+				<div class="content">
+					<a href="./detail-12.html" class="color">
+						<h4>考研大作战，第十二天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.19
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9999+
+						</span>
+					</div>
+					<p>今日主题 期末复习 看了点数字特征的题 真的觉得数学很神奇的学科 让人越来越喜欢 [爱心][爱心] 哈哈 还有 [委屈]期末快点过去吧 实在是.......
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (19).jpg" alt="">
+				<div class="content">
+					<a href="./detail-13.html" class="color">
+						<h4>考研大作战，第十三天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.20
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9999+
+						</span>
+					</div>
+					<p>今日主题:开放经济下短期经济模型 复习重点 蒙代尔-弗莱明模型 关键的假设 国际资本流动迅速使rw=r lm*曲线 is*曲线 蒙代尔-弗莱明模型的应用 1浮动汇率下的财政货币政策 2固定汇率下的财政货币政策 3针对 该模型与is
+						lm模型相关政策不同之处的原因分析 主要抓住 y↑r↑高于rw后 会有资金流入 且本币升值 国内价格↑净出口↓ 所以净出口的减少和汇率的上升足以抵消政府扩张性财政政策的效果 使 y不变e↑...
+
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (20).jpg" alt="">
+				<div class="content">
+					<a href="./detail-14.html" class="color">
+						<h4>考研大作战，第十四天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.21
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9999+
+						</span>
+					</div>
+					<p>今天主要复习了一下 前几天看的多维变量函数的分布 弄懂了 离散型的相关问题 最大最小值问题 PPP1 as pic 复习期末 还有四天 坚持坚持！！
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (21).jpg" alt="">
+				<div class="content">
+					<a href="./detail-15.html" class="color">
+						<h4>考研大作战，第十五天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.22
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9999+
+						</span>
+					</div>
+					<p>今日主题:一般均衡论与福利经济学 复习重点: 帕累托最优状态 帕累托改进 潜在的帕累托改进 交换帕累托最优状态:MRSxy=MRSxy 生产帕累托最优状态:MRTSxy=MRTSxy 生产和交换帕累托最优状态:MRT=MRS 阿罗不可能定理:非独裁情况下，不可能存在适用于所有人的社会福利函数。
+						埃奇渥斯盒装图 得 交换契约曲线 生产契约曲线 从而由生产契约曲线得到生产可能性曲线 如图7 PPP 2 今日份开心[害羞][害羞] 阅读没错啦啦嘻嘻 加油加油加油[奋斗][奋斗] 期末考试背的我[吐]
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (22).jpg" alt="">
+				<div class="content">
+					<a href="./detail-16.html" class="color">
+						<h4>考研大作战，第十六天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.24
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9999+
+						</span>
+					</div>
+					<p>概率的扫尾工作 感觉不记几天就会忘记的知识[捂脸] 今天的时间又是基本用给期末了 今天过了就只有一天了 还是快点吧 期末快点考完 我要去吃好吃的[害羞] 然后接着奋斗啊
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (23).jpg" alt="">
+				<div class="content">
+					<a href="./detail-17.html" class="color">
+						<h4>考研大作战，第十七天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.26
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9999+
+						</span>
+					</div>
+					<p>几天没打卡 宝宝心里苦 明天考试第二天[大哭][大哭] 加油吧
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (24).jpg" alt="">
+				<div class="content">
+					<a href="./detail-18.html" class="color">
+						<h4>考研大作战，第十八天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.07.02
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9999+
+						</span>
+					</div>
+					<p>往校门走的时候 本来有点赶了-_-|| 路上看到个很瘦小很老的老奶奶拖了好多东西边走边掉 感觉她费好大力气捡到的吧 就帮她拿了一袋东西 拖了一个箱子 一路上一直在说感谢感谢 今天洗澡的时候上一个在我那洗澡的人 把手机落在那里 还给她的时候也一直再说感谢感谢
+						其实 感觉虽然很小的事情 但是却那么温暖 [爱心]
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (25).jpg" alt="">
+				<div class="content">
+					<a href="./detail-19.html" class="color">
+						<h4>考研大作战，第十九天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.07.04
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9999+
+						</span>
+					</div>
+					<p>我肥来啦~~ 给永乐大帝编书风格打个call哈哈哈 回复状态的第一天还不错不错啦 今日主题. 线性代数 行列式计算 政治:中国抗日战争时期 明天整理 错题
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (26).jpg" alt="">
+				<div class="content">
+					<a href="./detail-20.html" class="color">
+						<h4>考研大作战，第二十天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.07.06
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9999+
+						</span>
+					</div>
+					<p>矩阵复习 运算 伴随 可逆 初等 正交 秩 06阅读1 很重要 中国共产党解放战争时期(内战 非重) 矩阵习题练习 4错题 无思路 整理 社会主义基本制度在中国的确立 重要知识:1949-1956 相关国情 主要矛盾 主要任务 应主要矛盾
+						中国共产党及人民政府4项工作 像社会主义过渡 总路线:一化三改 工业化 农业 手工业 资本主义工商业 萌芽 半社会主义性质 完全社会主义性质 农互助组 初级农业生产合作社 高~ 手生产合作小组 供销合作社 生产合作社 资初级国家资本主义
+						(加工订货 统销包销 代购代销)／高级国家资本主义(公私合营) 个别企业公私合营 ／全行业公私合营 社会主义基本制度在中国全面确立及其意义(本章非重点 毛中特重点) 日常确认一下 不那么丑 哈哈哈哈哈哈哈哈
+
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<!-- 跳转页 -->
+			<div class="pagebox">
+				<a href="#header"> < </a>
+				<!-- 当前的 --单独样式 -->
+				<a href="./index2.html">1</a>
+				<a href="#header" class="current">2</a>
+				<a href="./index4.html">3</a>
+				<a href="./index5.html">4</a>
+				<a href="./index6.html">5</a>
+				<a href="#"> > </a>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 友情链接 -->
+	<div class="link">
+		<span class="strong">友情链接：</span>
+		<a href="">个人博客</a>
+		<a href="">百度</a>
+		<a href="">男儿帮</a>
+		<a href="">FBI官网</a>
+		<a href="">骑兵连</a>
+		<a href="">沙县小吃</a>
+	</div>
+	<!-- 页脚 -->
+	<div id="footer-box">
+		<div class="footer">
+			<p>果果个人博客</p>
+			<p>Powered By Itsource.cn</p>
+			<p>联系方式:17609399909 QQ:953727948</p>
+			<p>本站所有资源来源网络,如有侵犯您的版权,请联系我,谢谢合作 !</p>
+		</div>
+	</div>
+	<script src="../js/aos.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		AOS.init({
+			easing: 'ease',
+			duration: 1200
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+
+/* 友情链接 */
+.link{
+    width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 28px;
+}
+.link a{
+    font-size: 13px;
+    color: #666;
+}
+.link .strong{
+    font-weight: bold;
+}    
+.link a:hover{
+    color: #00a7ea;
+}
+/* 页脚 */
+#footer-box{
+    width: 100%;
+    /* background: #fff; */
+    text-align: center;
+    padding: 24px 0;
+}
+#footer-box .footer{
+    font-size: 13px;
+    color: #bbbbbb;
+}
+#footer-box .footer p{
+    line-height: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

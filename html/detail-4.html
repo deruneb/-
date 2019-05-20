@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>考研大作战-第四天</title>
+	<!-- 头部样式引入 -->
+	<link rel="stylesheet" href="../css/header.css">
+	<!-- 内容区样式引入 -->
+	<link rel="stylesheet" href="../css/index.css">
+	<link rel="stylesheet" href="../css/detail-1.css">
+	<link rel="stylesheet" type="text/css" href="../css/lidebox-ty.css" />
+	<!-- 页脚样式引入 -->
+	<link rel="stylesheet" href="../css/footer.css">
+</head>
+
+<body>
+	<!-- <script>
+        alert('丢你楼某，扑街仔，贪晚栏月，介是你没有挽过的船新版本，只需体验三番钟，你造会干我一样，爱尚介款游戏，一给，窝里搞搞，波波波')
+    </script> -->
+	<!-- 头部样式 -->
+	<div id="header">
+		<!-- 1.顶部 -->
+		<div class="crest">
+			<div class="content ">
+				<span class="flt">欢迎访问果果博客</span>
+				<span class="frt">
+					<a href="">关于我们</a>
+					<a href="">联系我们</a>
+				</span>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!-- 2.导航栏 -->
+		<div class="Navbox">
+			<div class="Nav">
+				<img src="../img/logo.png">
+				<ul class="NavDate">
+					<li class="active">
+						<a href="./index2.html">首页</a>
+					</li>
+					<li>
+						<a href="">互联网</a>
+					</li>
+					<li>
+						<a href="">好货推荐</a>
+					</li>
+					<li>
+						<a href="">技术宅</a>
+					</li>
+					<li>
+						<a href="">数码</a>
+					</li>
+					<li>
+						<a href="">民生</a>
+					</li>
+					<li>
+						<a href="">影像</a>
+					</li>
+					<li>
+						<a href="">游记</a>
+					</li>
+					<li>
+						<a href="">心情随笔</a>
+					</li>
+					<li>
+						<a href="">留言本</a>
+					</li>
+				</ul>
+				<form method="POST" class="search">
+					<input type="text" name="sear" class="sear" placeholder="Search" maxlength="12">
+					<input type="button" name="tijia" class="glass">
+				</form>
+			</div>
+		</div>
+		<!-- 3.结尾 -->
+		<div class="head-btm">
+			<div id="test">
+				<canvas id="canvas" width="1349" height="400"></canvas>
+				<script>
+					function project3D(x, y, z, vars) {
+						var p, d;
+						x -= vars.camX;
+						y -= vars.camY - 8;
+						z -= vars.camZ;
+						p = Math.atan2(x, z);
+						d = Math.sqrt(x * x + z * z);
+						x = Math.sin(p - vars.yaw) * d;
+						z = Math.cos(p - vars.yaw) * d;
+						p = Math.atan2(y, z);
+						d = Math.sqrt(y * y + z * z);
+						y = Math.sin(p - vars.pitch) * d;
+						z = Math.cos(p - vars.pitch) * d;
+						var rx1 = -1000;
+						var ry1 = 1;
+						var rx2 = 1000;
+						var ry2 = 1;
+						var rx3 = 0;
+						var ry3 = 0;
+						var rx4 = x;
+						var ry4 = z;
+						var uc = (ry4 - ry3) * (rx2 - rx1) - (rx4 - rx3) * (ry2 - ry1);
+						var ua = ((rx4 - rx3) * (ry1 - ry3) - (ry4 - ry3) * (rx1 - rx3)) / uc;
+						var ub = ((rx2 - rx1) * (ry1 - ry3) - (ry2 - ry1) * (rx1 - rx3)) / uc;
+						if (!z) z = 0.000000001;
+						if (ua > 0 && ua < 1 && ub > 0 && ub < 1) {
+							return {
+								x: vars.cx + (rx1 + ua * (rx2 - rx1)) * vars.scale,
+								y: vars.cy + y / z * vars.scale,
+								d: (x * x + y * y + z * z)
+							}
+						} else {
+							return {
+								d: -1
+							}
+						}
+					}
+
+					function elevation(x, y, z) {
+						var dist = Math.sqrt(x * x + y * y + z * z);
+						if (dist && z / dist >= -1 && z / dist <= 1) return Math.acos(z / dist);
+						return 0.00000001
+					}
+
+					function rgb(col) {
+						col += 0.000001;
+						var r = parseInt((0.5 + Math.sin(col) * 0.5) * 16);
+						var g = parseInt((0.5 + Math.cos(col) * 0.5) * 16);
+						var b = parseInt((0.5 - Math.sin(col) * 0.5) * 16);
+						return "#" + r.toString(16) + g.toString(16) + b.toString(16)
+					}
+
+					function interpolateColors(RGB1, RGB2, degree) {
+						var w2 = degree;
+						var w1 = 1 - w2;
+						return [w1 * RGB1[0] + w2 * RGB2[0], w1 * RGB1[1] + w2 * RGB2[1], w1 * RGB1[2] + w2 * RGB2[2]]
+					}
+
+					function rgbArray(col) {
+						col += 0.000001;
+						var r = parseInt((0.5 + Math.sin(col) * 0.5) * 256);
+						var g = parseInt((0.5 + Math.cos(col) * 0.5) * 256);
+						var b = parseInt((0.5 - Math.sin(col) * 0.5) * 256);
+						return [r, g, b]
+					}
+
+					function colorString(arr) {
+						var r = parseInt(arr[0]);
+						var g = parseInt(arr[1]);
+						var b = parseInt(arr[2]);
+						return "#" + ("0" + r.toString(16)).slice(-2) + ("0" + g.toString(16)).slice(-2) + ("0" + b.toString(16)).slice(-
+							2)
+					}
+
+					function process(vars) {
+						if (vars.points.length < vars.initParticles)
+							for (var i = 0; i < 5; ++i) spawnParticle(vars);
+						var p, d, t;
+						p = Math.atan2(vars.camX, vars.camZ);
+						d = Math.sqrt(vars.camX * vars.camX + vars.camZ * vars.camZ);
+						d -= Math.sin(vars.frameNo / 80) / 25;
+						t = Math.cos(vars.frameNo / 300) / 165;
+						vars.camX = Math.sin(p + t) * d;
+						vars.camZ = Math.cos(p + t) * d;
+						vars.camY = -Math.sin(vars.frameNo / 220) * 15;
+						vars.yaw = Math.PI + p + t;
+						vars.pitch = elevation(vars.camX, vars.camZ, vars.camY) - Math.PI / 2;
+						var t;
+						for (var i = 0; i < vars.points.length; ++i) {
+							x = vars.points[i].x;
+							y = vars.points[i].y;
+							z = vars.points[i].z;
+							d = Math.sqrt(x * x + z * z) / 1.0075;
+							t = .1 / (1 + d * d / 5);
+							p = Math.atan2(x, z) + t;
+							vars.points[i].x = Math.sin(p) * d;
+							vars.points[i].z = Math.cos(p) * d;
+							vars.points[i].y += vars.points[i].vy * t * ((Math.sqrt(vars.distributionRadius) - d) * 2);
+							if (vars.points[i].y > vars.vortexHeight / 2 || d < .25) {
+								vars.points.splice(i, 1);
+								spawnParticle(vars)
+							}
+						}
+					}
+
+					function drawFloor(vars) {
+						var x, y, z, d, point, a;
+						for (var i = -25; i <= 25; i += 1) {
+							for (var j = -25; j <= 25; j += 1) {
+								x = i * 2;
+								z = j * 2;
+								y = vars.floor;
+								d = Math.sqrt(x * x + z * z);
+								point = project3D(x, y - d * d / 85, z, vars);
+								if (point.d != -1) {
+									size = 1 + 15000 / (1 + point.d);
+									a = 0.15 - Math.pow(d / 50, 4) * 0.15;
+									if (a > 0) {
+										vars.ctx.fillStyle = colorString(interpolateColors(rgbArray(d / 26 - vars.frameNo / 40), [0, 128, 32], .5 +
+											Math.sin(d / 6 - vars.frameNo / 8) / 2));
+										vars.ctx.globalAlpha = a;
+										vars.ctx.fillRect(point.x - size / 2, point.y - size / 2, size, size)
+									}
+								}
+							}
+						}
+						vars.ctx.fillStyle = "#82f";
+						for (var i = -25; i <= 25; i += 1) {
+							for (var j = -25; j <= 25; j += 1) {
+								x = i * 2;
+								z = j * 2;
+								y = -vars.floor;
+								d = Math.sqrt(x * x + z * z);
+								point = project3D(x, y + d * d / 85, z, vars);
+								if (point.d != -1) {
+									size = 1 + 15000 / (1 + point.d);
+									a = 0.15 - Math.pow(d / 50, 4) * 0.15;
+									if (a > 0) {
+										vars.ctx.fillStyle = colorString(interpolateColors(rgbArray(-d / 26 - vars.frameNo / 40), [32, 0, 128], .5 +
+											Math.sin(-d / 6 - vars.frameNo / 8) / 2));
+										vars.ctx.globalAlpha = a;
+										vars.ctx.fillRect(point.x - size / 2, point.y - size / 2, size, size)
+									}
+								}
+							}
+						}
+					}
+
+					function sortFunction(a, b) {
+						return b.dist - a.dist
+					}
+
+					function draw(vars) {
+						vars.ctx.globalAlpha = .15;
+						vars.ctx.fillStyle = "#000";
+						vars.ctx.fillRect(0, 0, canvas.width, canvas.height);
+						drawFloor(vars);
+						var point, x, y, z, a;
+						for (var i = 0; i < vars.points.length; ++i) {
+							x = vars.points[i].x;
+							y = vars.points[i].y;
+							z = vars.points[i].z;
+							point = project3D(x, y, z, vars);
+							if (point.d != -1) {
+								vars.points[i].dist = point.d;
+								size = 1 + vars.points[i].radius / (1 + point.d);
+								d = Math.abs(vars.points[i].y);
+								a = .8 - Math.pow(d / (vars.vortexHeight / 2), 1000) * .8;
+								vars.ctx.globalAlpha = a >= 0 && a <= 1 ? a : 0;
+								vars.ctx.fillStyle = rgb(vars.points[i].color);
+								if (point.x > -1 && point.x < vars.canvas.width && point.y > -1 && point.y < vars.canvas.height) vars.ctx.fillRect(
+									point.x - size / 2, point.y - size / 2, size, size)
+							}
+						}
+						vars.points.sort(sortFunction)
+					}
+
+					function spawnParticle(vars) {
+						var p, ls;
+						pt = {};
+						p = Math.PI * 2 * Math.random();
+						ls = Math.sqrt(Math.random() * vars.distributionRadius);
+						pt.x = Math.sin(p) * ls;
+						pt.y = -vars.vortexHeight / 2;
+						pt.vy = vars.initV / 20 + Math.random() * vars.initV;
+						pt.z = Math.cos(p) * ls;
+						pt.radius = 200 + 800 * Math.random();
+						pt.color = pt.radius / 1000 + vars.frameNo / 250;
+						vars.points.push(pt)
+					}
+
+					function frame(vars) {
+						if (vars === undefined) {
+							var vars = {};
+							vars.canvas = document.querySelector("canvas");
+							vars.ctx = vars.canvas.getContext("2d");
+							vars.canvas.width = document.body.clientWidth;
+							vars.canvas.height = document.body.clientHeight;
+							window.addEventListener("resize", function () {
+								vars.canvas.width = document.body.clientWidth;
+								vars.canvas.height = document.body.clientHeight;
+								vars.cx = vars.canvas.width / 2;
+								vars.cy = vars.canvas.height / 2
+							}, true);
+							vars.frameNo = 0;
+							vars.camX = 0;
+							vars.camY = 0;
+							vars.camZ = -14;
+							vars.pitch = elevation(vars.camX, vars.camZ, vars.camY) - Math.PI / 2;
+							vars.yaw = 0;
+							vars.cx = vars.canvas.width / 2;
+							vars.cy = vars.canvas.height / 2;
+							vars.bounding = 10;
+							vars.scale = 500;
+							vars.floor = 26.5;
+							vars.points = [];
+							vars.initParticles = 1000;
+							vars.initV = .01;
+							vars.distributionRadius = 800;
+							vars.vortexHeight = 25
+						}
+						vars.frameNo++;
+						requestAnimationFrame(function () {
+							frame(vars)
+						});
+						process(vars);
+						draw(vars)
+					}
+					frame();
+				</script>
+			</div>
+			<div class="content">
+				<div class="tit">
+					<h2>果果博客</h2>
+					<a href="">+关注</a>
+				</div>
+				<p>WY love LYY</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- 内容区 -->
+	<div class="container">
+		<!-- 主内容 -->
+		<div class="content">
+			<h1>考研大作战 four day</h1>
+			<p class="cont">今日主题: 复习重点 AD.AS模型的补充 总需求曲线斜率为负原因 is lm曲线的移动 古典总供给曲线 恩格斯总供给曲线 成因 完全竞争市场 短期 长期 均衡 SMC=P=MR=AR SMC=LMC=SAC=LAC=P=AR=MR 还有一个概述题
+				政府限价政策 总结如5 概论第二讲 八大分布 分布函数 概率密度 函数分布函数概率密度 请注意图中提示点！
+			</p>
+			<!--<div class="icont">
+					<img src="../icon/23.jpg" alt="">
+					<img src="../icon/24.jpg" alt="">
+					<img src="../icon/25.jpg" alt="">
+					<img src="../icon/26.jpg" alt="">
+					<img src="../icon/27.jpg" alt="">
+					<img src="../icon/28.jpg" alt="">
+				</div>-->
+			<div class="boxwrapper" id="icont">
+				<ul class="boxinner">
+					<li>
+						<a href="#">
+							<img src="../icon/23.jpg" alt="">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../icon/24.jpg" alt="">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../icon/25.jpg" alt="">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../icon/26.jpg" alt="">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../icon/27.jpg" alt="">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="../icon/28.jpg" alt="">
+						</a>
+					</li>
+				</ul>
+				<ul class="btnitem">
+					<li class="current">1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+				</ul>
+				<span class="btnleft"></span>
+				<span class="btnright"></span>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- 友情链接 -->
+	<div class="link">
+		<span class="strong">友情链接：</span>
+		<a href="">个人博客</a>
+		<a href="">百度</a>
+		<a href="">空间</a>
+		<a href="">微博</a>
+		<a href="">微信公众号</a>
+		<a href="">嗷嗷嗷</a>
+	</div>
+	<!-- 页脚 -->
+	<div id="footer-box">
+		<div class="footer">
+			<p>果果个人博客</p>
+			<p>Powered By Itsource.cn</p>
+			<p>联系方式:17609399909 QQ:953727948</p>
+			<p>本站所有资源来源网络,如有侵犯您的版权,请联系我,谢谢合作 !</p>
+		</div>
+	</div>
+
+	<script src="../js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/tyslide.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var ops1 = {
+			width: 800, //轮播的宽度
+			height: 600, //轮播的高度
+			isShowbtn: true //是否显示左右的按钮
+		};
+		$("#icont").tySlide(ops1);
+	</script>
+</body>
+
+</html>

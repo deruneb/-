@@ -1,0 +1,192 @@
+/* 清除默认样式 */
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: #000000;
+}
+ul{
+    list-style: none;
+}
+input{
+    outline: none;
+ } 
+ 
+/* 网页背景颜色 */
+body{
+    background: #f2f2f2;
+}
+/* 头部内容区域宽度 */
+#header .crest .content{
+    width: 1200px;
+    margin: 0 auto;
+}
+/* 1.顶部样式 */
+#header .crest{
+    height: 50px;
+    background: #f1f3f4;
+}
+#header .crest .flt,#header .crest .frt a{
+    color:#aaaaaa; 
+    font-size: 14px;
+    line-height: 50px;
+    margin-left: 7px;
+}
+#header .crest .flt{
+    float: left;
+    margin-left: 0;
+}
+#header .crest .frt{
+    float: right;
+}
+#header .crest audio{
+	position: absolute;
+	top: 24px;
+	left: 733px;
+	height: 25px;
+}
+/* 清浮动 */
+.clear{
+    clear: both;
+}
+/* 2.导航栏样式 */
+#header .Navbox{
+    background: #fff;
+}
+#header .Nav{
+    width: 1200px;
+    height: 75px;
+    background: #fff;
+    margin: 0 auto;
+}
+#header .Nav img{
+    float: left;
+    width: 159px;
+    height: 75px;
+    margin-right: 30px;
+}
+#header .Nav .NavDate li{
+    float: left;
+    line-height: 75px;
+    margin: 0 15px;
+}
+#header .Nav .NavDate li a{
+    color: #444444;
+    font-size: 18px;
+}
+#header .Nav .NavDate li.active a{
+    color: #00a7ea;
+}
+#header .Nav .NavDate li a:hover{
+    color: #00a7ea;
+}
+#header .Nav .search{
+    float: left;
+    position: relative;
+}
+#header .Nav .search .sear{
+    float: left;
+    margin: 20px auto;
+    height: 30px;
+    width: 205px;
+    background: #f5f5f5;
+    border: 1px solid #eaeaea;
+}
+#header .Nav .search .glass{
+    float: right;
+    height: 28px;
+    width: 34px;
+    background: url("../images/search.png") no-repeat;
+    border: 0;
+    position: absolute;
+    top: 21px;
+    right: 0px;
+    cursor: pointer;
+}
+#header .Nav .search .glass:hover{
+    /* height: 28px;
+    width: 34px; */
+    background-position: -30px 0px;   
+}
+/* 清浮动 */
+#header .Nav .NavDate li:after{
+    height: 0;
+    content: '';
+    clear: both;
+    overflow: hidden;
+}
+/* 3.结尾样式 */
+#header .head-btm{
+    height: 400px;
+    /*background: url("../img/banne1.png") no-repeat;
+    background-size: 100% 183px;*/
+    margin-bottom: 16px;
+    position: relative;
+}
+
+#header .head-btm .content{
+    width: 1200px;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+#header .head-btm .tit{
+    height: 35px;
+    padding-top:64px; 
+    
+}
+#header .head-btm h2{
+    color: #fff;
+    float: left;
+
+}
+#header .head-btm .content .tit a{
+    color: #00a7ea;
+    font-size: 14px;    
+    float: left;
+    line-height: 35px;
+    margin-left: 5px;
+}
+#header .head-btm .content p{
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

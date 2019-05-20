@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>果果博客-首页</title>
+	<!-- 头部样式引入 -->
+	<link rel="stylesheet" href="../css/header.css">
+	<!-- 内容区样式引入 -->
+	<link rel="stylesheet" href="../css/index.css">
+	<link rel="stylesheet" href="../css/aos.css">
+	
+	<!-- 页脚样式引入 -->
+	<link rel="stylesheet" href="../css/footer.css">
+</head>
+
+<body>
+	<!--[if IE]>
+		<script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+	
+	<!-- <script>
+        alert('丢你楼某，扑街仔，贪晚栏月，介是你没有挽过的船新版本，只需体验三番钟，你造会干我一样，爱尚介款游戏，一给，窝里搞搞，波波波')
+    </script> -->
+	<!-- 头部样式 -->
+	<div id="header">
+		<!-- 1.顶部 -->
+		<div class="crest">
+			<div class="content ">
+				<span class="flt">欢迎访问果果博客</span>
+				<span class="frt">
+					<a href="">关于我们</a>
+					<a href="">联系我们</a>
+				</span>
+				<div class="clear"></div>
+			</div>
+			<audio controls="controls">
+				<source src="../video/3.mp3" type="audio/mp3"></source>
+			</audio>
+		</div>
+		<!-- 2.导航栏 -->
+		<div class="Navbox">
+			<div class="Nav">
+				<img src="../img/logo.png">
+				<ul class="NavDate">
+					<li class="active">
+						<a href="">首页</a>
+					</li>
+					<li>
+						<a href="">互联网</a>
+					</li>
+					<li>
+						<a href="">好货推荐</a>
+					</li>
+					<li>
+						<a href="">技术宅</a>
+					</li>
+					<li>
+						<a href="">数码</a>
+					</li>
+					<li>
+						<a href="">民生</a>
+					</li>
+					<li>
+						<a href="">影像</a>
+					</li>
+					<li>
+						<a href="">游记</a>
+					</li>
+					<li>
+						<a href="">心情随笔</a>
+					</li>
+					<li>
+						<a href="">留言本</a>
+					</li>
+				</ul>
+				<form method="POST" class="search">
+					<input type="text" name="sear" class="sear" placeholder="Search" maxlength="12">
+					<input type="button" name="tijia" class="glass">
+				</form>
+			</div>
+		</div>
+		<!-- 3.结尾 -->
+		<div class="head-btm">
+			<div id="test">
+				<canvas id="canvas" width="1349" height="400"></canvas>
+				<script>
+					function project3D(x,y,z,vars){var p,d;x-=vars.camX;y-=vars.camY-8;z-=vars.camZ;p=Math.atan2(x,z);d=Math.sqrt(x*x+z*z);x=Math.sin(p-vars.yaw)*d;z=Math.cos(p-vars.yaw)*d;p=Math.atan2(y,z);d=Math.sqrt(y*y+z*z);y=Math.sin(p-vars.pitch)*d;z=Math.cos(p-vars.pitch)*d;var rx1=-1000;var ry1=1;var rx2=1000;var ry2=1;var rx3=0;var ry3=0;var rx4=x;var ry4=z;var uc=(ry4-ry3)*(rx2-rx1)-(rx4-rx3)*(ry2-ry1);var ua=((rx4-rx3)*(ry1-ry3)-(ry4-ry3)*(rx1-rx3))/uc;var ub=((rx2-rx1)*(ry1-ry3)-(ry2-ry1)*(rx1-rx3))/uc;if(!z)z=0.000000001;if(ua>0&&ua<1&&ub>0&&ub<1){return{x:vars.cx+(rx1+ua*(rx2-rx1))*vars.scale,y:vars.cy+y/z*vars.scale,d:(x*x+y*y+z*z)}}else{return{d:-1}}}function elevation(x,y,z){var dist=Math.sqrt(x*x+y*y+z*z);if(dist&&z/dist>=-1&&z/dist<=1)return Math.acos(z/dist);return 0.00000001}function rgb(col){col+=0.000001;var r=parseInt((0.5+Math.sin(col)*0.5)*16);var g=parseInt((0.5+Math.cos(col)*0.5)*16);var b=parseInt((0.5-Math.sin(col)*0.5)*16);return"#"+r.toString(16)+g.toString(16)+b.toString(16)}function interpolateColors(RGB1,RGB2,degree){var w2=degree;var w1=1-w2;return[w1*RGB1[0]+w2*RGB2[0],w1*RGB1[1]+w2*RGB2[1],w1*RGB1[2]+w2*RGB2[2]]}function rgbArray(col){col+=0.000001;var r=parseInt((0.5+Math.sin(col)*0.5)*256);var g=parseInt((0.5+Math.cos(col)*0.5)*256);var b=parseInt((0.5-Math.sin(col)*0.5)*256);return[r,g,b]}function colorString(arr){var r=parseInt(arr[0]);var g=parseInt(arr[1]);var b=parseInt(arr[2]);return"#"+("0"+r.toString(16)).slice(-2)+("0"+g.toString(16)).slice(-2)+("0"+b.toString(16)).slice(-2)}function process(vars){if(vars.points.length<vars.initParticles)for(var i=0;i<5;++i)spawnParticle(vars);var p,d,t;p=Math.atan2(vars.camX,vars.camZ);d=Math.sqrt(vars.camX*vars.camX+vars.camZ*vars.camZ);d-=Math.sin(vars.frameNo/80)/25;t=Math.cos(vars.frameNo/300)/165;vars.camX=Math.sin(p+t)*d;vars.camZ=Math.cos(p+t)*d;vars.camY=-Math.sin(vars.frameNo/220)*15;vars.yaw=Math.PI+p+t;vars.pitch=elevation(vars.camX,vars.camZ,vars.camY)-Math.PI/2;var t;for(var i=0;i<vars.points.length;++i){x=vars.points[i].x;y=vars.points[i].y;z=vars.points[i].z;d=Math.sqrt(x*x+z*z)/1.0075;t=.1/(1+d*d/5);p=Math.atan2(x,z)+t;vars.points[i].x=Math.sin(p)*d;vars.points[i].z=Math.cos(p)*d;vars.points[i].y+=vars.points[i].vy*t*((Math.sqrt(vars.distributionRadius)-d)*2);if(vars.points[i].y>vars.vortexHeight/2||d<.25){vars.points.splice(i,1);spawnParticle(vars)}}}function drawFloor(vars){var x,y,z,d,point,a;for(var i=-25;i<=25;i+=1){for(var j=-25;j<=25;j+=1){x=i*2;z=j*2;y=vars.floor;d=Math.sqrt(x*x+z*z);point=project3D(x,y-d*d/85,z,vars);if(point.d!=-1){size=1+15000/(1+point.d);a=0.15-Math.pow(d/50,4)*0.15;if(a>0){vars.ctx.fillStyle=colorString(interpolateColors(rgbArray(d/26-vars.frameNo/40),[0,128,32],.5+Math.sin(d/6-vars.frameNo/8)/2));vars.ctx.globalAlpha=a;vars.ctx.fillRect(point.x-size/2,point.y-size/2,size,size)}}}}vars.ctx.fillStyle="#82f";for(var i=-25;i<=25;i+=1){for(var j=-25;j<=25;j+=1){x=i*2;z=j*2;y=-vars.floor;d=Math.sqrt(x*x+z*z);point=project3D(x,y+d*d/85,z,vars);if(point.d!=-1){size=1+15000/(1+point.d);a=0.15-Math.pow(d/50,4)*0.15;if(a>0){vars.ctx.fillStyle=colorString(interpolateColors(rgbArray(-d/26-vars.frameNo/40),[32,0,128],.5+Math.sin(-d/6-vars.frameNo/8)/2));vars.ctx.globalAlpha=a;vars.ctx.fillRect(point.x-size/2,point.y-size/2,size,size)}}}}}function sortFunction(a,b){return b.dist-a.dist}function draw(vars){vars.ctx.globalAlpha=.15;vars.ctx.fillStyle="#000";vars.ctx.fillRect(0,0,canvas.width,canvas.height);drawFloor(vars);var point,x,y,z,a;for(var i=0;i<vars.points.length;++i){x=vars.points[i].x;y=vars.points[i].y;z=vars.points[i].z;point=project3D(x,y,z,vars);if(point.d!=-1){vars.points[i].dist=point.d;size=1+vars.points[i].radius/(1+point.d);d=Math.abs(vars.points[i].y);a=.8-Math.pow(d/(vars.vortexHeight/2),1000)*.8;vars.ctx.globalAlpha=a>=0&&a<=1?a:0;vars.ctx.fillStyle=rgb(vars.points[i].color);if(point.x>-1&&point.x<vars.canvas.width&&point.y>-1&&point.y<vars.canvas.height)vars.ctx.fillRect(point.x-size/2,point.y-size/2,size,size)}}vars.points.sort(sortFunction)}function spawnParticle(vars){var p,ls;pt={};p=Math.PI*2*Math.random();ls=Math.sqrt(Math.random()*vars.distributionRadius);pt.x=Math.sin(p)*ls;pt.y=-vars.vortexHeight/2;pt.vy=vars.initV/20+Math.random()*vars.initV;pt.z=Math.cos(p)*ls;pt.radius=200+800*Math.random();pt.color=pt.radius/1000+vars.frameNo/250;vars.points.push(pt)}function frame(vars){if(vars===undefined){var vars={};vars.canvas=document.querySelector("canvas");vars.ctx=vars.canvas.getContext("2d");vars.canvas.width=document.body.clientWidth;vars.canvas.height=document.body.clientHeight;window.addEventListener("resize",function(){vars.canvas.width=document.body.clientWidth;vars.canvas.height=document.body.clientHeight;vars.cx=vars.canvas.width/2;vars.cy=vars.canvas.height/2},true);vars.frameNo=0;vars.camX=0;vars.camY=0;vars.camZ=-14;vars.pitch=elevation(vars.camX,vars.camZ,vars.camY)-Math.PI/2;vars.yaw=0;vars.cx=vars.canvas.width/2;vars.cy=vars.canvas.height/2;vars.bounding=10;vars.scale=500;vars.floor=26.5;vars.points=[];vars.initParticles=1000;vars.initV=.01;vars.distributionRadius=800;vars.vortexHeight=25}vars.frameNo++;requestAnimationFrame(function(){frame(vars)});process(vars);draw(vars)}frame();
+				</script>
+			</div>
+	
+			<div class="content">
+				<div class="tit">
+					<h2>果果博客</h2>
+					<a href="">+关注</a>
+				</div>
+				<p>WY love LYY</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- 内容区 -->
+	<div class="container">
+		<!-- 内容区左边部分 -->
+		<div class="columnbox">
+			<div class="listbox">
+				<img src="../img/psb (4).jpg" alt="">
+				<div class="content">
+					<a href="./detail-1.html" class="color">
+						<h4>考研大作战，第一天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.05
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9999+
+						</span>
+					</div>
+					<p>今日主题:成本论 复习重点. 成本最小化 产量最大化 条件:MRTSlk＝资本量/劳动量＝劳动价格w/资本价格 r＝劳动边际产量/资本边际产量(计算题重点) 总不变成本 总可变成本 总成本 曲线 平均不变成本 平均可变成本 平均成本
+						边际成本 曲线(需要注意:TC TVC 拐点前后斜率先减后增 这决定了mc成u型 因TC TVC曲线斜率就是mc ) ...
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (1).png" alt="">
+				<div class="content">
+					<a href="./detail-2.html" class="color">
+						<h4>考研大作战，第二天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.06
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							997+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9994+
+						</span>
+					</div>
+					<p>今日主题:IS-LM模型 复习重点: 思路:投资的决定 r 产品市场(实际利率 预期收益率 风险投资率) 利率的决定 货币需求供给(需求 L1=KY(交易动机 谨慎动机 统称 交易需求m1) L2=-hr (投机动机 需求m2)L=ky-hr
+						) 重要图像 MEC资本边际效率MEI投资边际效率(投资需求曲线)曲线 is(2) lm(1)曲线 推导过程 ls曲线的移动...
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (2).jpg" alt="">
+				<div class="content">
+					<a href="./detail-3.html" class="color">
+						<h4>考研大作战，第三天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.08
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							996+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9999+
+						</span>
+					</div>
+					<p>今日主题:AD AS模型 ＋ 一些杂乱 复习重点 需求曲线斜率为负原因 两种极端供给曲线 古典供给曲线 凯恩斯供给曲线 昨天阅读全对 今天阅读错一 错误原因:题目中问 第一段某某句如何理解 文中说了 这些研究人员在处理其他民族问题争端时要站在他族思想领域来思考问题
+						这说明什么? be inclined to 说明他们更倾向与站在自己的角度去想问题啊 ！！！ 概率第一讲 要学会把事件用ABC等表示出来 这样清晰一些 二个 拿到一道题 要去判断 这是个什么模型...
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (3).jpg" alt="">
+				<div class="content">
+					<a href="./detail-4.html" class="color">
+						<h4>考研大作战，第四天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.10
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9998+
+						</span>
+					</div>
+					<p>今日主题: 复习重点 AD.AS模型的补充 总需求曲线斜率为负原因 is lm曲线的移动 古典总供给曲线 恩格斯总供给曲线 成因 完全竞争市场 短期 长期 均衡 SMC=P=MR=AR SMC=LMC=SAC=LAC=P=AR=MR
+						还有一个概述题 政府限价政策 总结如5 概论第二讲 八大分布 分布函数 概率密度 函数分布函数概率密度 请注意图中提示点！
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (5).jpg" alt="">
+				<div class="content">
+					<a href="./detail-5.html" class="color">
+						<h4>考研大作战，第五天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.11
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9998+
+						</span>
+					</div>
+					<p>今日主题: 复习重点 AD.AS模型的补充 总需求曲线斜率为负原因 is lm曲线的移动 古典总供给曲线 恩格斯总供给曲线 成因 完全竞争市场 短期 长期 均衡 SMC=P=MR=AR SMC=LMC=SAC=LAC=P=AR=MR
+						还有一个概述题 政府限价政策 总结如5 概论第二讲 八大分布 分布函数 概率密度 函数分布函数概率密度 请注意图中提示点！
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (6).jpg" alt="">
+				<div class="content">
+					<a href="./detail-6.html" class="color">
+						<h4>考研大作战，第六天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.12
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9998+
+						</span>
+					</div>
+					<p>今日主题:不完全竞争市场 复习重点:三种市场长短期均衡的条件 完全垄断市场中 MR=p (1-1/ed) 三级价格歧视 1实现了p=mc 剥夺了全部消费者剩余 3弹性越大 定价越高(曲线越平坦 弹性越大) 垄断竞争市场中 D曲线与d曲线
+						寡头竞争市场中 4大模型 图二！ 明天练计算 注意解题的思路和方法 步骤 正态分布的知识 小总结 今天的正项级数 交错级数 请记住 昨天？n! 收根号n发 n发ln(n+1)发 交错 条件收敛...
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (12).jpg" alt="">
+				<div class="content">
+					<a href="./detail-7.html" class="color">
+						<h4>考研大作战，第七天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.13
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9998+
+						</span>
+					</div>
+					<p>今日主题:补漏 展开与求和可以说是掌握的相当差了 明天看汤视频！！！然后做题！！ (部分记得不牢的积分) 完全垄断厂商 完全竞争厂商 区3 不完全竞争厂商中的 差价计算问题 短期成本函数 长期最优生产规模 明天要去讲ppt[捂脸][捂脸]妈也...竟然有点小不爽
+						晚上还细心准备了一下 人纳 就是要在这些时候才会发现自己什么都不会 学的东西那么少 ...
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (14).jpg" alt="">
+				<div class="content">
+					<a href="./detail-8.html" class="color">
+						<h4>考研大作战，第八天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.14
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9998+
+						</span>
+					</div>
+					<p>今日主题:宏观经济政策 复习重点 宏观经济四大目标 财政政策及其效果 货币政策及其效果 扩张性财政政策(i下降) 扩张性货币政策(r下降) 自动稳定器 斟酌使用 挤出效应！！(财政政策中) 政府支出增加所引起的消费和私人投资的降低
+						(这是对前面islm曲线移动的又一总结) lm斜率不变 is越陡 移动对y影响越大 is斜率不变 lm越陡 移动对y影响越小 is ...
+
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (15).jpg" alt="">
+				<div class="content">
+					<a href="./detail-9.html" class="color">
+						<h4>考研大作战，第九天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.15
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9998+
+						</span>
+					</div>
+					<p>今日主题:宏观经济政策续 复习重点 货币政策具体政策 再贴现在政策 变动法定准备率 公开市场业务 道义劝告 货币政策is lm曲线分析 当lm斜率不变is 越陡 对国民收入影响越小 当is斜率不变lm越陡 对国民收入影响越大 记住这句话！当d越大
+						即投资对利率变动的反应程度越大 is曲线斜率绝对值越小 越平坦 货币当局 增加货币供给 使利率减少的越小 对国民收入影响更大 ...
+
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="listbox">
+				<img src="../img/psb (16).jpg" alt="">
+				<div class="content">
+					<a href="./detail-10.html" class="color">
+						<h4>考研大作战，第十天</h4>
+					</a>
+					<div class="msg">
+						<span>
+							<i class="icon icon-clock"></i>
+							18.06.17
+						</span>
+						<span>
+							<i class="icon icon-bar"></i>
+							心情随笔
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							999+
+						</span>
+						<span>
+							<i class="icon icon-info"></i>
+							9998+
+						</span>
+					</div>
+					<p>今日主题:生产要素价格的决定 复习重点: 他同样要求边际收益等于边际成本 但这里的边际成本=w 即 要素价格 这里的边际收益=边际产品价值vmp 完全竞争厂商对要素的需求曲线 与vmp曲线(因为边际产品价值递减的影响 曲线像右) 重合
+						到他们的意义却完全不同 分析如图4第一点 生产要素的供给 他的原则(要素供给边际效用＝保留自用边际效用)...
+
+
+					</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+
+			<!-- 跳转页 -->
+			<div class="pagebox">
+				<a href="#header"> < </a>
+				<!-- 当前的 --单独样式 -->
+				<a href="#header" class="current">1</a>
+				<a href="./index3.html">2</a>
+				<a href="./index4.html">3</a>
+				<a href="./index5.html">4</a>
+				<a href="./index6.html">5</a>
+				<a href="#"> > </a>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+		<!-- 内容区右边侧栏 -->
+		<div class="sidebar-box">
+			<!-- 网站分类 -->
+			<div class="categor">
+				<p class="title" aos="fade-up">网站分类</p>
+				<ul class="website">
+					<li aos="fade-up" aos-delay="100">
+						<a href="">互联网</a>
+					</li>
+					<li aos="fade-up" aos-delay="200">
+						<a href="">好货推荐</a>
+					</li>
+					<li aos="fade-up" aos-delay="300">
+						<a href="">技术宅</a>
+					</li>
+					<li aos="fade-up" aos-delay="400">
+						<a href="">数码</a>
+					</li>
+					<li aos="fade-up" aos-delay="500">
+						<a href="">民生</a>
+					</li>
+					<li aos="fade-up" aos-delay="600">
+						<a href="">影像</a>
+					</li>
+					<li aos="fade-up" aos-delay="700">
+						<a href="">游记</a>
+					</li>
+					<li aos="fade-up" aos-delay="800">
+						<a href="">心情随笔</a>
+					</li>
+				</ul>
+			</div>
+			<!-- 控制面板 -->
+			<div class="control">
+				<p class="title" aos="fade-up">控制面板</p>
+				<div class="font" aos="fade-left"aos-delay="300">
+					<p>您好，欢迎到访网站！</p>
+					<a href="" class="font-1">登录后台</a>
+					<a href="" class="font-2">查看权限</a>
+				</div>
+			</div>
+			<!-- 搜索 -->
+			<div class="beat">
+				<p class="title" aos="fade-up">搜索</p>
+				<form method="POST" class="search-1" aos="fade-up" aos-delay="100">
+					<input type="text" name="text" class="seartext">
+					<input type="submit" name="tijao" value="搜索" class="searsub">
+				</form>
+				<div class="clear"></div>
+			</div>
+			<!-- 最新留言 -->
+			<div class="message">
+				<p class="title" aos="fade-up">最新留言</p>
+				<ul class="colum">
+					<!-- 栏目1 高度不同 -->
+					<li class="colu-1" aos="fade-up" aos-delay="100">
+						<span>
+							互联网
+							<!-- 小三角图标 -->
+							<i class="triangle"></i>
+						</span>
+						<a href="">楼主：沙发</a>
+					</li>
+					<!-- 栏目2 通用样式-->
+					<li class="colu-2" aos="fade-up" aos-delay="200">
+						<span>
+							互联网
+							<!-- 小三角图标 -->
+							<i class="triangle"></i>
+						</span>
+						<a href="">二楼：楼主好漂亮啊！！</a>
+					</li>
+					<!-- 栏目3 -->
+					<li class="colu-2" aos="fade-up" aos-delay="300">
+						<span>
+							互联网
+							<!-- 小三角图标 -->
+							<i class="triangle"></i>
+						</span>
+						<a href="">三楼：小仙女，哈哈哈哈！</a>
+					</li>
+					<!-- 栏目4 -->
+					<li class="colu-2" aos="fade-up" aos-delay="400">
+						<span>
+							互联网
+							<!-- 小三角图标 -->
+							<i class="triangle"></i>
+						</span>
+						<a href="">四楼：哇哇哇哇</a>
+					</li>
+				</ul>
+
+			</div>
+			<!-- 热门文章 -->
+			<div class="article">
+				<p class="title" aos="fade-up">热门文章</p>
+				<ul class="article-bar">
+					<!-- 文章1 -->
+					<li class="bar-1" aos="fade-up" aos-delay="100">
+						<p class="cont">
+							<!-- 箭头图标 -->
+							<i class="arrow"></i>
+							<a href="">宝马五系100-120码高速方向盘抖动解决方案</a>
+						</p>
+						<span>
+							<i class="icon icon-bar"></i>
+							技术宅
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							1107
+						</span>
+					</li>
+					<!-- 文章2 通用样式 -->
+					<li class="bar-2" aos="fade-up" aos-delay="200">
+						<p class="cont">
+							<!-- 箭头图标 -->
+							<i class="arrow"></i>
+							<a href="">sigma适马35mm 1.4 ART样片评测</a>
+						</p>
+						<span>
+							<i class="icon icon-bar"></i>
+							影像
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							1107
+						</span>
+					</li>
+					<!-- 文章3 -->
+					<li class="bar-2" aos="fade-up" aos-delay="300">
+						<p class="cont">
+							<!-- 箭头图标 -->
+							<i class="arrow"></i>
+							<a href="">2016泰国普吉岛旅游自由行攻略</a>
+						</p>
+						<span>
+							<i class="icon icon-bar"></i>
+							游记
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							1107
+						</span>
+					</li>
+					<!-- 文章4 -->
+					<li class="bar-2" aos="fade-up" aos-delay="400">
+						<p class="cont">
+							<!-- 箭头图标 -->
+							<i class="arrow"></i>
+							<a href="">bmw宝马的通病故障</a>
+						</p>
+						<span>
+							<i class="icon icon-bar"></i>
+							技术宅
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							1107
+						</span>
+					</li>
+					<!-- 文章5 -->
+					<li class="bar-2" aos="fade-up" aos-delay="500">
+						<p class="cont">
+							<!-- 箭头图标 -->
+							<i class="arrow"></i>
+							<a href="">水漫金山</a>
+						</p>
+						<span>
+							<i class="icon icon-bar"></i>
+							影像
+						</span>
+						<span>
+							<i class="icon icon-eye"></i>
+							9999
+						</span>
+					</li>
+				</ul>
+			</div>
+			<!-- 标签列表 -->
+			<div class="docket">
+				<p class="title" aos="fade-up">标签列表</p>
+				<ul class="docket-box">
+					<li aos="fade-up" aos-delay="100">
+						<a href="">手机 (3)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">特斯拉 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">个人博客 (42)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">中央空调 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">台湾 (3)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">小米 (4)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">宝马 (4)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">汽车 (7)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">bmw (4)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">医院 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">奶粉 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">大众 (3)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">魔兽世界 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">英雄联盟 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">美国队长 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">影评 (7)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">海淘 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">购物 (1)</a>
+					</li>
+
+					<li aos="fade-up" aos-delay="100">
+						<a href="">香港 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">装修 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">百度 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">SEO (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">本田 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">英菲尼迪 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">爱狗人士 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">变形金刚 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">广场舞 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">上海 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">相机 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">单反 (2)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">尼康 (2)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">vps (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">linode (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">适马 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">35 1.4 art (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">房地产 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">苹果 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">普吉岛 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100">
+						<a href="">净水器 (1)</a>
+					</li>
+					<li aos="fade-up" aos-delay="100"> 
+						<a href="">婴儿推车 (1)</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+		<!-- 广告栏 -->
+		<!--<div class="gagfl">
+				<img src="../images/zhaa.png" alt="">
+			</div>
+			<div class="gag2fr">
+				<img src="../images/huu.png" alt="">
+			</div>-->
+	</div>
+
+	<!-- 友情链接 -->
+	<div class="link">
+		<span class="strong">友情链接：</span>
+		<a href="">个人博客</a>
+		<a href="">百度</a>
+		<a href="">男儿帮</a>
+		<a href="">FBI官网</a>
+		<a href="">骑兵连</a>
+		<a href="">沙县小吃</a>
+	</div>
+	<!-- 页脚 -->
+	<div id="footer-box">
+		<div class="footer">
+			<p>果果个人博客</p>
+			<p>Powered By Itsource.cn</p>
+			<p>联系方式:17609399909 QQ:953727948</p>
+			<p>本站所有资源来源网络,如有侵犯您的版权,请联系我,谢谢合作 !</p>
+		</div>
+	</div>
+	<script src="../js/aos.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		AOS.init({
+			easing: 'ease',
+			duration: 1200
+		});
+	</script>
+</body>
+
+</html>

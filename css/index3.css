@@ -1,0 +1,154 @@
+/* 精灵图 */
+.icon{
+    width: 16px;
+    height: 14px;
+    display: inline-block;  
+    background: url("../img/icon.png") no-repeat;
+}
+body{
+   background: #f4f4f4;
+}
+#test{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	z-index: -1;
+}
+#canvas{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* 左边内容区标题字体颜色 */
+.color{
+    color: #666;
+}
+/* 内容区宽度 */
+.container{
+    width: 1200px;
+    height: 2210px;
+    margin: 0 auto;
+    /* border: 1px solid black; */
+}
+
+/* 左边内容区 */
+.container .columnbox{
+    width: 100%;
+    float: left;
+    /* border: 1px solid black; */
+}
+.container .listbox{
+    width: 100%;
+    height: 166px;
+    text-align: justify;
+    border: 1px solid #eaeaea;
+    background: #fff;
+    float: left;
+    padding: 15px;
+    margin-bottom: 16px; 
+    box-shadow: 0 0 10px  1px #666;
+    transform-origin: top;
+}
+.container .listbox img{
+    float: left;
+    width: 180px;
+    height: 165px;
+    vertical-align: middle;
+    box-shadow: 0 0 10px 1px #666;
+    transition: .3s;
+    
+}
+/*图片抖动*/
+@keyframes run {
+    0% {
+        transform: rotate(0);
+    }
+    20% {
+        transform: rotate(4deg);
+    }
+    40% {
+        transform: rotate(-4deg);
+    }
+    60% {
+        transform: rotate(4deg);
+    }
+    80% {
+        transform: rotate(-4deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+.container .listbox:hover {
+    box-shadow: 0 0 15px 1px #000;
+    animation: run 2s;
+}
+.container .listbox:hover img {
+    transform: scale(1.1);
+}
+
+.container .listbox .content{
+    margin-left: 222px; 
+    overflow: hidden;
+}
+.container .listbox .content a:hover{
+    color: #00a7ea;
+}
+.container .listbox .content .msg{
+    font-size: 14px;
+    line-height: 55px;
+}
+.container .listbox .content .msg span{
+    margin-right: 15px;
+}
+/* 提示信息中的小图标定位 */
+.container .listbox .content .msg .icon-clock{
+    background-position: 1px 0px; 
+}
+.container .listbox .content .msg .icon-bar{
+    background-position: 0px -15px; 
+}
+.container .listbox .content .msg .icon-eye{
+    background-position: 0px -31px; 
+}
+.container .listbox .content .msg .icon-info{
+    background-position: 1px -47px; 
+}
+.container .listbox .content p{
+    font-size: 14px;
+    height: 100px;
+    /* word-wrap: break-word; */
+    text-overflow: clip;
+    /* overflow: hidden; */
+}
+/* 跳转栏 */
+.container .columnbox .pagebox{
+    float: left;
+    height: 40px;
+    /* border: 1px solid black; */
+    width: 844px;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom:30px; 
+    margin-left: 179px;
+}
+.container .columnbox .pagebox a{
+    display: inline-block;
+    width: 50px;
+    height: 40px;
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius:5px;    
+}
+/* 当前的--单独样式 */
+.container .columnbox .pagebox .current{
+    background: #00a7ea;
+    color: #fff;
+}
+.container .columnbox .pagebox a:hover{
+    background: #00a7ea;
+    color: #fff;
+}
